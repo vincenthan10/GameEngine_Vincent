@@ -2,11 +2,14 @@
 #include <iostream>
 #include "sfml/Graphics.hpp"
 #include "ECS.h"
+#include "Component.h"
+#include "Systems/RenderingSystem.h"
 
 class Engine
 {
 public:
-	sf::RenderWindow* window;
+	sf::RenderWindow* window = nullptr;
+	ECS::World* world = nullptr;
 
 private:
 	bool bQuit;
@@ -14,6 +17,7 @@ private:
 public:
 	void Start(sf::RenderWindow* win);
 	static Engine& GetInstance();
+	void AddSystem(ECS::EntitySystem* newSys);
 
 private:
 	Engine();
