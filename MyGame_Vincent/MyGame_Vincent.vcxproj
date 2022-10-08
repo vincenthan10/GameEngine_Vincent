@@ -18,29 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Systems\AnimationSystem.cpp" />
-    <ClCompile Include="Systems\RenderingSystem.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="ECS.h" />
-    <ClInclude Include="Engine.h" />
-    <ClInclude Include="Systems\AnimationSystem.h" />
-    <ClInclude Include="Systems\RenderingSystem.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{51f602f5-9899-4b0a-a895-de5d1b8472d2}</ProjectGuid>
-    <RootNamespace>GameEngineVincent</RootNamespace>
+    <ProjectGuid>{69c033af-9a2e-48bd-9443-ce7a3a72ffcb}</ProjectGuid>
+    <RootNamespace>MyGameVincent</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -85,9 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>../packages/sfml-2.5.1/include;$(IncludePath)</IncludePath>
-    <LibraryPath>../packages/sfml-2.5.1/lib;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)$(GameEngine_Vincent)\lib</OutDir>
+    <IncludePath>$(SolutionDir)Packages\SFML-2.5.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Packages\SFML-2.5.1\lib;$(SolutionDir)GameEngine_Vincent\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -108,7 +94,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;GameEngine_Vincent.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -155,6 +141,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="GameMain.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
