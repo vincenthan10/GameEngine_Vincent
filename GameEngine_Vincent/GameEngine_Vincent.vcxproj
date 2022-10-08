@@ -21,12 +21,14 @@
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Systems\AnimationSystem.cpp" />
     <ClCompile Include="Systems\RenderingSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h" />
     <ClInclude Include="ECS.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="Systems\AnimationSystem.h" />
     <ClInclude Include="Systems\RenderingSystem.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -4,6 +4,7 @@
 #include "ECS.h"
 #include "Component.h"
 #include "Systems/RenderingSystem.h"
+#include "Systems/AnimationSystem.h"
 
 class Engine
 {
