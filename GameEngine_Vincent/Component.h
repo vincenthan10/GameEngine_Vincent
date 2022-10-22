@@ -7,9 +7,27 @@ public:
 	ECS_DECLARE_TYPE;
 	float xPos;
 	float yPos;
+	float rotation;
+	float xSpeed;
+	float ySpeed;
+	float xSpeedMod;
+	float ySpeedMod;
 
-	Transform(float newX, float newY): xPos(newX), yPos(newY) {
-		
+	Transform(float newX, float newY, float newXSpeed = 0.0f, float newYSpeed = 0.0f, float rotation = 0.0f)
+	{
+		this->xPos = newX;
+		this->yPos = newY;
+		this->xSpeed = 0.0f;
+		this->ySpeed = 0.0f;
+		this->xSpeedMod = newXSpeed;
+		this->ySpeedMod = newYSpeed;
+		this->rotation = rotation;
+	}
+
+	void Move() 
+	{
+		this->xPos += this->xSpeed;
+		this->yPos += this->ySpeed;
 	}
 
 };
@@ -60,3 +78,39 @@ public:
 	}
 };
 ECS_DEFINE_TYPE(Animator);
+
+struct InputController
+{
+public:
+	ECS_DECLARE_TYPE;
+	bool bInputActive;
+	bool w, a, s, d, left, right, up, down, space;
+
+	InputController() 
+	{
+		std::memset(this, false, sizeof(InputController));
+		bInputActive = true;
+	}
+};
+ECS_DEFINE_TYPE(InputController);
+
+struct BoxCollider 
+{
+public:
+	ECS_DECLARE_TYPE;
+	int leftEdge, rightEdge, bottomEdge, topEdge;
+
+	BoxCollider()
+	{
+		std::memset(this, 0, sizeof(BoxCollider));
+	}
+
+	void Update(int x, int y, int width, int height) 
+	{
+		this->leftEdge = x;
+		this->rightEdge = x + width;
+		this->bottomEdge = y + height;
+		this->topEdge = y;
+	}
+};
+ECS_DEFINE_TYPE(BoxCollider);
