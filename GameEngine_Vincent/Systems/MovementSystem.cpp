@@ -18,20 +18,29 @@ void MovementSystem::tick(ECS::World* world, float deltaTime)
 					transform->ySpeed =+ transform->ySpeedMod;
 					transform->Move();
 				}
-				if (input->w || input->up)
+				else if (input->w || input->up)
 				{
 					transform->ySpeed =- transform->ySpeedMod;
 					transform->Move();
 				}
+				else
+				{
+					transform->ySpeed = 0;
+				}
+
 				if (input->d || input->right)
 				{
 					transform->xSpeed =+ transform->xSpeedMod;
 					transform->Move();
 				}
-				if (input->a || input->left)
+				else if (input->a || input->left)
 				{
 					transform->xSpeed =- transform->xSpeedMod;
 					transform->Move();
+				}
+				else
+				{
+					transform->xSpeed = 0;
 				}
 			}
 		});
