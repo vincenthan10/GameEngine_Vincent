@@ -8,12 +8,14 @@
 #include "Systems/MovementSystem.h"
 #include "Systems/InputSystem.h"
 #include "Systems/PhysicsSystem.h"
+#include "Interface/MainCamera.h"
 
 class Engine
 {
 public:
 	sf::RenderWindow* window = nullptr;
 	ECS::World* world = nullptr;
+	class MainCamera* mainCamera = nullptr;
 
 private:
 	bool bQuit;
