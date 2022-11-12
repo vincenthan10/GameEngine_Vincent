@@ -20,7 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Interface\GUI_Components\Button.cpp" />
+    <ClCompile Include="Interface\GUI_Components\ButtonMap.cpp" />
     <ClCompile Include="Interface\MainCamera.cpp" />
+    <ClCompile Include="Interface\PauseMenu.cpp" />
+    <ClCompile Include="Interface\States.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Systems\AnimationSystem.cpp" />
     <ClCompile Include="Systems\InputSystem.cpp" />
@@ -32,7 +36,11 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="ECS.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="Interface\GUI_Components\Button.h" />
+    <ClInclude Include="Interface\GUI_Components\ButtonMap.h" />
     <ClInclude Include="Interface\MainCamera.h" />
+    <ClInclude Include="Interface\PauseMenu.h" />
+    <ClInclude Include="Interface\States.h" />
     <ClInclude Include="Systems\AnimationSystem.h" />
     <ClInclude Include="Systems\InputSystem.h" />
     <ClInclude Include="Systems\MovementSystem.h" />
