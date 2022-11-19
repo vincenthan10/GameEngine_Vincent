@@ -114,3 +114,16 @@ public:
 	}
 };
 ECS_DEFINE_TYPE(BoxCollider);
+
+struct Tag {
+	ECS_DECLARE_TYPE;
+public:
+	std::vector<std::string> tagNames;
+	Tag() = default;
+	void addTag(std::string tag)
+	{
+		this->tagNames.push_back(tag);
+	}
+
+};
+ECS_DEFINE_TYPE(Tag);

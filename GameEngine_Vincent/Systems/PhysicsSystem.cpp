@@ -139,22 +139,36 @@ void PhysicsSystem::pushEntity(ECS::Entity* touchingEntity, ECS::Entity* touched
     float newTouchedXSpeed = touchedEntity->get<Transform>()->xSpeed;
     float newTouchedYSpeed = touchedEntity->get<Transform>()->ySpeed;
 
-    if (newTouchingXSpeed > 0 && newTouchingX < newTouchedX) //push right
+    if (std::find(
+        touchedEntity->get<Tag>()->tagNames.begin(),
+        touchedEntity->get<Tag>()->tagNames.end(),
+        "Object")!= 
+        touchedEntity->get<Tag>()->tagNames.end())
     {
-        touchedEntity->get<Transform>()->xPos++;
-    }
-    else if (newTouchingXSpeed < 0 && newTouchingX > newTouchedX) //push left
-    {
-        touchedEntity->get<Transform>()->xPos--;
-    }
-    
-    if (newTouchingYSpeed > 0 && newTouchingY < newTouchedY) //push down
-    {
-        touchedEntity->get<Transform>()->yPos++;
-    }
-    else if (newTouchingYSpeed < 0 && newTouchingY > newTouchedY) //push up
-    {
-        touchedEntity->get<Transform>()->yPos--;
+        if (std::find(
+            touchingEntity->get<Tag>()->tagNames.begin(),
+            touchingEntity->get<Tag>()->tagNames.end(),
+            "Player") !=
+            touchingEntity->get<Tag>()->tagNames.end())
+        {
+            if (newTouchingXSpeed > 0 && newTouchingX < newTouchedX) //push right
+            {
+                touchedEntity->get<Transform>()->xPos++;
+            }
+            else if (newTouchingXSpeed < 0 && newTouchingX > newTouchedX) //push left
+            {
+                touchedEntity->get<Transform>()->xPos--;
+            }
+
+            if (newTouchingYSpeed > 0 && newTouchingY < newTouchedY) //push down
+            {
+                touchedEntity->get<Transform>()->yPos++;
+            }
+            else if (newTouchingYSpeed < 0 && newTouchingY > newTouchedY) //push up
+            {
+                touchedEntity->get<Transform>()->yPos--;
+            }
+        }
     }
 
 }
@@ -173,10 +187,9 @@ void PhysicsSystem::tick(ECS::World* world, float deltaTime)
                 collider->Update(transform->xPos, transform->yPos, sprite->picture.getTextureRect().width, sprite->picture.getTextureRect().height);
             });
 
-        world->each<BoxCollider, Transform>(
+        world->each<BoxCollider>(
             [&](ECS::Entity* touchingEntity,
-                ECS::ComponentHandle<BoxCollider> touchingCollider,
-                ECS::ComponentHandle<Transform> transform
+                ECS::ComponentHandle<BoxCollider> touchingCollider
                 )->void
             {
                 world->each<BoxCollider>(
