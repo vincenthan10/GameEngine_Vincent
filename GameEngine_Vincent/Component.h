@@ -127,3 +127,17 @@ public:
 
 };
 ECS_DEFINE_TYPE(Tag);
+
+struct TileMap {
+	ECS_DECLARE_TYPE;
+public:
+	float gridSizeF;
+	uint32_t gridSizeU;
+	uint32_t layers;
+	sf::Vector2u maxSize;
+	sf::RectangleShape collisionBox;
+	std::vector<std::vector<std::vector<Tile*>>> map;
+	TileMap() = default;
+
+};
+ECS_DEFINE_TYPE(TileMap);

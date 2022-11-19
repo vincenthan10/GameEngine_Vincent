@@ -10,6 +10,7 @@
 #include "Systems/PhysicsSystem.h"
 #include "Interface/MainCamera.h"
 #include "Interface/PauseMenu.h"
+#include "Tile.h"
 
 class Engine
 {
