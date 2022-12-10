@@ -11,6 +11,7 @@
 #include "Interface/MainCamera.h"
 #include "Interface/PauseMenu.h"
 #include "Tile.h"
+#include "Systems/TileMapSystem.h"
 
 class Engine
 {
